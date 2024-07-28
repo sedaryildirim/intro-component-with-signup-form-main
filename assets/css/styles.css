@@ -1,0 +1,51 @@
+/* Google Fonts */
+
+
+/* Root */
+:root {
+    /* Colors */
+    --violet: hsl(257, 40%, 49%);
+    --magenta: hsl(300, 69%, 71%);  
+    /* Typography */
+    --heading-font: "Poppins", sans-serif;
+    --body-font: "Open Sans", sans-serif;
+    /* Font weights */
+    --font-weight-regular: 400;
+    --font-weight-bold: 600;
+}
+
+/* Body Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--body-font);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.attribution {
+    font-size: 0.7rem;
+    color: var(--dark-cyan);
+}
+
+.attribution a {
+    color: var(--medium-cyan);
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
+}
