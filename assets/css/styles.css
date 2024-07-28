@@ -1,20 +1,25 @@
 /* Google Fonts */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* Root */
 :root {
     /* Colors */
-    --violet: hsl(257, 40%, 49%);
-    --magenta: hsl(300, 69%, 71%);  
+    --red: hsl(0, 100%, 74%);
+    --green: hsl(154, 59%, 51%);
+    --blue: hsl(248, 32%, 49%);
+    --dark-blue: hsl(249, 10%, 26%);
+    --grayish-blue: hsl(246, 25%, 77%);
+    
     /* Typography */
-    --heading-font: "Poppins", sans-serif;
-    --body-font: "Open Sans", sans-serif;
-    /* Font weights */
+    --font-family: "Poppins", sans-serif;
+    --font-size-base: 16px;
     --font-weight-regular: 400;
-    --font-weight-bold: 600;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 }
 
-/* Body Reset */
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -23,12 +28,130 @@
 
 body {
     min-height: 100vh;
-    font-family: var(--body-font);
-    font-size: 16px;
+    background-image: url(../images/bg-intro-mobile.png);
+    background-color: var(--red);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
 }
 
+/* Main Content */
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
 
+/* Intro Section */
+.intro {
+    color: white;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1.5rem;
+}
+
+.intro p {
+    font-size: 1rem;
+    font-weight: var(--font-weight-regular);
+}
+
+/* Signup Section */
+.signup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.price-card {
+    background-color: var(--blue);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.price-card p {
+    font-size: 0.9rem;
+}
+
+.price-card strong {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Form Styles */
+.form-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--grayish-blue);
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-medium);
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--dark-blue);
+}
+
+form button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: hsl(154, 59%, 45%);
+}
+
+.disclaimer {
+    font-size: 0.75rem;
+    color: var(--grayish-blue);
+    margin-top: 1rem;
+}
+
+.disclaimer a {
+    color: var(--red);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+}
+
+/* Utility Classes */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 
 /* Footer */
 footer {
@@ -38,14 +161,40 @@ footer {
 
 .attribution {
     font-size: 0.7rem;
-    color: var(--dark-cyan);
+    color: white;
 }
 
 .attribution a {
-    color: var(--medium-cyan);
+    color: var(--blue);
     text-decoration: none;
 }
 
 .attribution a:hover {
     text-decoration: underline;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (min-width: 768px) {
+    body {
+        background-image: url(../images/bg-intro-desktop.png);
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    .intro, .signup {
+        flex: 1;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro p {
+        font-size: 1.1rem;
+    }
 }
