@@ -1,16 +1,12 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Root */
 :root {
-    /* Colors */
     --red: hsl(0, 100%, 74%);
     --green: hsl(154, 59%, 51%);
     --blue: hsl(248, 32%, 49%);
     --dark-blue: hsl(249, 10%, 26%);
     --grayish-blue: hsl(246, 25%, 77%);
     
-    /* Typography */
     --font-family: "Poppins", sans-serif;
     --font-size-base: 16px;
     --font-weight-regular: 400;
@@ -19,7 +15,6 @@
     --font-weight-bold: 700;
 }
 
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -40,31 +35,28 @@ body {
     padding: 2rem 1rem;
 }
 
-/* Main Content */
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
 
-/* Intro Section */
 .intro {
     color: white;
     margin-bottom: 3rem;
 }
 
 h1 {
-    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: var(--font-weight-bold);
     margin-bottom: 1.5rem;
 }
 
 .intro p {
-    font-size: 1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     font-weight: var(--font-weight-regular);
 }
 
-/* Signup Section */
 .signup {
     display: flex;
     flex-direction: column;
@@ -87,7 +79,6 @@ h1 {
     font-weight: var(--font-weight-semibold);
 }
 
-/* Form Styles */
 .form-card {
     background-color: white;
     padding: 1.5rem;
@@ -95,14 +86,19 @@ h1 {
     box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
 }
 
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
 form input {
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    padding: 1rem 2.5rem 1rem 1rem;
     border: 1px solid var(--grayish-blue);
     border-radius: 5px;
     font-family: var(--font-family);
     font-weight: var(--font-weight-medium);
+    transition: border-color 0.3s ease;
 }
 
 form input:focus {
@@ -121,11 +117,15 @@ form button {
     font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 form button:hover {
     background-color: hsl(154, 59%, 45%);
+}
+
+form button:active {
+    transform: scale(0.98);
 }
 
 .disclaimer {
@@ -138,9 +138,13 @@ form button:hover {
     color: var(--red);
     font-weight: var(--font-weight-bold);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* Utility Classes */
+.disclaimer a:hover {
+    color: var(--dark-blue);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -153,7 +157,34 @@ form button:hover {
     border: 0;
 }
 
-/* Footer */
+.error-message {
+    display: none;
+    color: var(--red);
+    font-style: italic;
+    font-size: 0.75rem;
+    text-align: left;
+    margin-top: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.error-icon {
+    position: absolute;
+    right: 1rem;
+    top: 35%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.form-group.error input {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.form-group.error .error-message,
+.form-group.error .error-icon {
+    display: block;
+}
+
 footer {
     margin-top: 2rem;
     text-align: center;
@@ -167,34 +198,36 @@ footer {
 .attribution a {
     color: var(--blue);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .attribution a:hover {
+    color: white;
     text-decoration: underline;
 }
 
-/* Media Queries for Responsive Design */
 @media screen and (min-width: 768px) {
     body {
         background-image: url(../images/bg-intro-desktop.png);
     }
-
+    
     .wrapper {
         display: flex;
         align-items: center;
         text-align: left;
         gap: 2rem;
     }
-
+    
     .intro, .signup {
         flex: 1;
     }
+}
 
-    h1 {
-        font-size: 2.5rem;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-
-    .intro p {
-        font-size: 1.1rem;
+    to {
+        opacity: 1;
     }
 }
